@@ -93,3 +93,8 @@ class Libgit2Conan(ConanFile):
 
 	def package_info(self):
 		self.cpp_info.libs = tools.collect_libs(self)
+		
+		if self.settings.os == "Windows":
+			self.cpp_info.libs.append("winhttp.lib")
+			self.cpp_info.libs.append("Rpcrt4.lib")
+			self.cpp_info.libs.append("Crypt32.lib")
