@@ -80,14 +80,13 @@ class Libgit2Conan(ConanFile):
 
     def package(self):
         include_folder = os.path.join(self.source_subfolder, "include")
-        self.copy(pattern="LICENSE", dst="license", src=self.source_subfolder)
+        self.copy(pattern="COPYING", dst="licenses", src=self.source_subfolder)
         self.copy(pattern="*", dst="include", src=include_folder)
         self.copy(pattern="*.dll", dst="bin", keep_path=False)
         self.copy(pattern="*.lib", dst="lib", keep_path=False)
         self.copy(pattern="*.a", dst="lib", keep_path=False)
         self.copy(pattern="*.so*", dst="lib", keep_path=False)
         self.copy(pattern="*.dylib", dst="lib", keep_path=False)
-
 
     def package_info(self):
         self.cpp_info.libs = tools.collect_libs(self)
