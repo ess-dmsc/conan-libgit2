@@ -8,7 +8,7 @@ import os
 
 class Libgit2Conan(ConanFile):
     name = "libgit2"
-    version = "0.26.2"
+    version = "0.26.3"
     url = "https://github.com/impsnldavid/conan-libgit2"
     description = "A portable, pure C implementation of the Git core methods"
     license = "GPLv2 with Linking Exception"
