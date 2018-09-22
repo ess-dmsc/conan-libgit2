@@ -30,7 +30,7 @@ class Libgit2Conan(ConanFile):
         "threadsafe=True",
         "use_sha1dc=False",
         "use_iconv=False",
-        "with_openssl=True",
+        "with_openssl=False",
         "with_ssh=True",
         "use_winhttp=True"
     )
