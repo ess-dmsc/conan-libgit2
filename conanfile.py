@@ -8,7 +8,8 @@ import os
 
 class Libgit2Conan(ConanFile):
     name = "libgit2"
-    version = "0.27.4"
+    src_version = "0.27.4"
+    version = "0.27.4-dm1"
     url = "https://github.com/impsnldavid/conan-libgit2"
     description = "A portable, pure C implementation of the Git core methods"
     license = "GPLv2 with Linking Exception"
@@ -40,8 +41,8 @@ class Libgit2Conan(ConanFile):
 
     def source(self):
         source_url = "https://github.com/libgit2/libgit2"
-        tools.get("{0}/archive/v{1}.tar.gz".format(source_url, self.version))
-        extracted_dir = self.name + "-" + self.version
+        tools.get("{0}/archive/v{1}.tar.gz".format(source_url, self.src_version))
+        extracted_dir = self.name + "-" + self.src_version
         os.rename(extracted_dir, self.source_subfolder)
 
     def requirements(self):
@@ -53,9 +54,9 @@ class Libgit2Conan(ConanFile):
 
     def build(self):
         # On Windows we need to replace part of the original CMakeLists file in order to locate libssh2
-        if self.settings.os == "Windows":
-            tools.replace_in_file(self.source_subfolder + "/CMakeLists.txt", "PKG_CHECK_MODULES(LIBSSH2 libssh2)", "FIND_PACKAGE(LIBSSH2)")
-            copy2(self.source_folder + "/FindLIBSSH2.cmake", self.source_subfolder + "/cmake/Modules", )
+        #if self.settings.os == "Windows":
+        #    tools.replace_in_file(self.source_subfolder + "/CMakeLists.txt", "PKG_CHECK_MODULES(LIBSSH2 libssh2)", "FIND_PACKAGE(LIBSSH2)")
+        #    copy2(self.source_folder + "/FindLIBSSH2.cmake", self.source_subfolder + "/cmake/Modules", )
 
         cmake = CMake(self)
         cmake.definitions["BUILD_CLAR"] = False
