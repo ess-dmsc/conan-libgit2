@@ -8,7 +8,7 @@ import os
 
 class Libgit2Conan(ConanFile):
     name = "libgit2"
-    version = "0.26.3"
+    version = "0.27.4"
     url = "https://github.com/impsnldavid/conan-libgit2"
     description = "A portable, pure C implementation of the Git core methods"
     license = "GPLv2 with Linking Exception"
@@ -26,7 +26,7 @@ class Libgit2Conan(ConanFile):
         "use_winhttp": [True, False]
     }
     default_options = (
-        "shared=False",
+        "shared=True",
         "threadsafe=True",
         "use_sha1dc=False",
         "use_iconv=False",
@@ -59,6 +59,7 @@ class Libgit2Conan(ConanFile):
 
         cmake = CMake(self)
         cmake.definitions["BUILD_CLAR"] = False
+	cmake.definitions["BUILD_EXAMPLES"] = False
         cmake.definitions["THREADSAFE"] = self.options.threadsafe
         cmake.definitions["USE_SHA1DC"] = self.options.use_sha1dc
         cmake.definitions["USE_ICONV"] = self.options.use_iconv
