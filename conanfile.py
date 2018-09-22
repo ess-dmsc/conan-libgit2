@@ -59,7 +59,7 @@ class Libgit2Conan(ConanFile):
 
         cmake = CMake(self)
         cmake.definitions["BUILD_CLAR"] = False
-	cmake.definitions["BUILD_EXAMPLES"] = False
+        cmake.definitions["BUILD_EXAMPLES"] = False
         cmake.definitions["THREADSAFE"] = self.options.threadsafe
         cmake.definitions["USE_SHA1DC"] = self.options.use_sha1dc
         cmake.definitions["USE_ICONV"] = self.options.use_iconv
