@@ -10,7 +10,7 @@ class Libgit2Conan(ConanFile):
     name = "libgit2"
     src_version = "0.27.4"
     version = "0.27.4-dm1"
-    url = "https://github.com/impsnldavid/conan-libgit2"
+    url = "https://github.com/ess-dmsc/conan-libgit2"
     description = "A portable, pure C implementation of the Git core methods"
     license = "GPLv2 with Linking Exception"
     exports = ["LICENSE.md"]
