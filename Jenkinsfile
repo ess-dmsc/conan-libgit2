@@ -56,19 +56,6 @@ def get_macos_pipeline() {
             --settings libgit2:build_type=Release \
             --options libgit2:shared=True \
             --build=outdated"
-
-          pkg_name_and_version = sh(
-            script: "./get_conan_pkg_name_and_version.sh",
-            returnStdout: true
-          ).trim()
-        }  // stage
-
-        stage("macOS: Upload") {
-          sh "conan upload \
-            --all \
-            ${conan_upload_flag} \
-            --remote ${conan_remote} \
-            ${pkg_name_and_version}@${conan_user}/${conanPackageChannel}"
         }  // stage
       }  // dir
     }  // node
@@ -107,9 +94,8 @@ def get_win10_pipeline() {
             --options libgit2:shared=True \
             --build=outdated"""
         }  // stage
-
       }  // dir
-      }
+      }  // ws
     }  // node
   }  // return
 }  // def
